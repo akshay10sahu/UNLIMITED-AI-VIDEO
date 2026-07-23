@@ -23,8 +23,25 @@ language = st.selectbox(
 
 prompt = st.text_area(
     "Describe your movie",
-    height=200
+    height=200,
+    placeholder="Write your movie idea here..."
+)
+
+duration = st.selectbox(
+    "Choose Video Duration",
+    [
+        "30 Seconds",
+        "1 Minute",
+        "3 Minutes",
+        "5 Minutes"
+    ]
 )
 
 if st.button("🎬 Generate Video"):
-    st.success("Video generation feature will be added in the next version.")
+    if prompt.strip() == "":
+        st.warning("Please write your movie idea first.")
+    else:
+        st.success("Your AI movie request has been submitted!")
+        st.write("Language:", language)
+        st.write("Duration:", duration)
+        st.write("Story:", prompt)
